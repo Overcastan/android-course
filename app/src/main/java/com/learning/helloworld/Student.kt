@@ -20,15 +20,14 @@ object StudentLoader {
 
     private fun loadStudent(str: String): Student {
         val parts = str.split(':')
-        return Student(parts[0], parts[1])
+        return Student(parts[1], parts[0])
     }
 
-    private fun generateStudents(): List<Student> {
-        return generateSequence(
+    private fun generateStudents() : List<Student> =
+        generateSequence(
             1,
-            { i -> if (i < 1000) i + 1 else null }).map { i -> Student("имя$i", "фамилия$i") }
-            .toList()
-    }
+            { i -> if (i < 1000) i + 1 else null }).map { i -> Student("Name$i", "Surname$i")
+    }.toList()
 
     private fun saveStudents(students: List<Student>, file: File) {
         val lines = students.map(::saveStudent)

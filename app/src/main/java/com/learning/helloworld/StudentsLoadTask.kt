@@ -17,7 +17,6 @@ class StudentsLoadTask(
             return emptyList()
         }
         val file = params[0]!!
-        Thread.sleep(10000)
         return StudentLoader.loadStudents(file)
     }
 
